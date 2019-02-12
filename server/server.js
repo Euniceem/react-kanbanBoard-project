@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const redis = require('connect-redis')(session);
+const kanban = require('./routes/kanban')
 
 
 const PORT = process.env.PORT || 8080;
@@ -28,6 +29,7 @@ app.get('/smoke', (req, res) => {
   return res.send('smoke test');
 });
 
+app.use('/', kanban);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
