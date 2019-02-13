@@ -8,7 +8,7 @@ module.exports = {
       host: 'localhost',
       user: 'euniceem1007',
       password: 'password',
-      database: 'euniceem1007'
+      database: 'react-kanban'
     },
     migrations: {
       directory: __dirname + '/knex/migrations',
@@ -37,7 +37,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       host: 'postgres-primary-db',
-      database: 'euniceem1007',
+      database: 'react-kanban',
       user: 'euniceem1007',
       password: 'password'
     },

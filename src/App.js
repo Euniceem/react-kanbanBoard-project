@@ -1,25 +1,57 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import { connect } from 'react-redux';
 import './App.css';
+import KanbanTitle from './components/KanbanTitle';
+import KanbanBoard from './components/KanbanBoard';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pageTitle: 'Kanban'
+    };
+
+    this.cards = [
+      {
+        title: 'demo',
+        status: 'In-Queue',
+        priorityName: 'High',
+        created_byFirstName: 'Eunice',
+        created_byLastName: 'Min',
+        assigned_byFirstName: 'Eunice',
+        assigned_byLastName: 'Min'
+      },
+      {
+        title: ' second demo',
+        status: 'In-Progress',
+        priorityName: 'Medium',
+        created_byFirstName: 'Eunice',
+        created_byLastName: 'Min',
+        assigned_byFirstName: 'Eunice',
+        assigned_byLastName: 'Min'
+      },
+      {
+        title: 'third demo',
+        status: 'Done',
+        priorityName: 'Low',
+        created_byFirstName: 'Eunice',
+        created_byLastName: 'Min',
+        assigned_byFirstName: 'Eunice',
+        assigned_byLastName: 'Min'
+      }
+    ]
+  };
+
+
   render() {
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <KanbanTitle title={this.state.pageTitle} />
+
+        <KanbanBoard data={this.cards} />
+
       </div>
     );
   }
