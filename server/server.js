@@ -22,11 +22,11 @@ const SESSION_SECRET = process.env.SESSION_SECRET
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/', kanban);
 
+app.use('/', kanban);
 // app.use(express.static('public'));
 
-app.get('/smoke', (req, res) => {
+app.get('/', (req, res) => {
   return res.send('smoke test');
 });
 

@@ -8,14 +8,17 @@ router.get('/', (req, res) => {
     withRelated: ['priority', 'created', 'assigned', 'status']
   })
     .then((cards) => {
+
       return res.json(cards);
     })
     .catch(err => {
-      return res.json(err.message)
+      res.json('error')
     })
 });
 
 router.post('/', (req, res) => {
+  let body = req.body;
+  console.log('BODY', req.body);
 
 })
 

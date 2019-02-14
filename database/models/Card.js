@@ -16,11 +16,11 @@ class Card extends bookshelf.Model {
   };
 
   status() {
-    return this.hasOne('Statuses', 'id', 'status_id');
+    return this.hasOne('Status', 'id', 'status_id');
   };
 
   priority() {
-    return this.hasOne('Priorites', 'id', 'priority_id');
+    return this.hasOne('Priority', 'id', 'priority_id');
   };
 };
 
