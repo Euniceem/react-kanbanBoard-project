@@ -5,7 +5,7 @@ class Priority extends bookshelf.Model {
   get timestamps() { return true; }
 
   priorites() {
-    return this.belongsTo('Card');
+    return this.hasMany('Card', 'priority_id');
   }
 }
 
