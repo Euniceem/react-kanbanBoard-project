@@ -1,37 +1,23 @@
 // Update with your config settings.
+require('dotenv').config({ path: './env' });
+
 module.exports = {
 
-  development: {
-    client: 'pg',
-    connection: {
-      host: 'localhost',
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB
-    },
-    migrations: {
-      directory: __dirname + '/knex/migrations',
-    },
-    seeds: {
-      directory: __dirname + '/knex/seeds'
-    }
+  client: 'pg',
+  connection: {
+    host: process.env.POSTGRES_HOSTNAME_LOCAL,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB
   },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      host: POSTGRES_HOSTNAME,
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DB
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+  pool: {
+    min: 2,
+    max: 10
+  },
+  migrations: {
+    directory: __dirname + '/knex/migrations',
+  },
+  seeds: {
+    directory: __dirname + '/knex/seeds'
   }
-
 };
