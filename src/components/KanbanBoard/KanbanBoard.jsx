@@ -1,38 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import KanbanColumn from '../KanbanColumn/KanbanColumn';
-// import KanbanCard from './KanbanCard';
+
+class KanbanBoard extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    const data = this.props.data;
+
+    const filterColumn = data.filter((card) => {
+
+      return card.status;
+    })
 
 
-const KanbanBoard = (props) => {
-
-  const { data } = props;
-  const inQueue = data.filter((card) => {
-    if (card.status === 'In-Queue') {
-      console.log(card)
-      return card;
-    };
-  })
-  const inProgress = data.filter((card) => {
-    return card.status === 'In-Progress';
-  })
-  const done = data.filter((card) => {
-    return card.status === 'Done'
-  })
-  // console.log(inQueue)
-
-  return (
-    <div id="column">
-      <div className='inQueue'>
-        <KanbanColumn cards={inQueue} status="In Queue" />
+    return (
+      <div id="column">
+        <div className='inQueue'>In-Queue
+          <KanbanColumn cards={filterColumn} status="In-Queue" />
+        </div>
+        <div className='inProgress'>In-Progress
+          <KanbanColumn cards={filterColumn} status="In-Progress" />
+        </div>
+        <div className='done'>Done
+          <KanbanColumn cards={filterColumn} status="Done" />
+        </div>
       </div>
-      <div className='inProgress'>
-        <KanbanColumn cards={inProgress} status="In-Progress" />
-      </div>
-      <div className='done'>
-        <KanbanColumn cards={done} status="Done" />
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
+
+
+
 
 export default KanbanBoard;

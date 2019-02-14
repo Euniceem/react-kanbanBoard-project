@@ -2,7 +2,6 @@ import React from 'react';
 
 const KanbanCard = (props) => {
   const { title, priorityName, created_byFirstName, assigned_byFirstName } = props;
-  // console.log(props);
 
   return (
     <div className='cardContainer'>

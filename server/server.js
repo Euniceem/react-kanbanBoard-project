@@ -9,7 +9,7 @@ const kanban = require('./routes/kanban')
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
-// const SESSION_SECRET = process.env.SESSION_SECRET
+const SESSION_SECRET = process.env.SESSION_SECRET
 // app.use(session({
 //   store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
 //   secret: SESSION_SECRET,

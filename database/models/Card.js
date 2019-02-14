@@ -5,8 +5,8 @@ class Card extends bookshelf.Model {
   get timestamps() { return true; }
 
   cards() {
-    return this.belongsTo('Users');
+    return this.belongsTo('User');
   }
 }
 
-module.exports = bookshelf.Model('Cards', Card);
+module.exports = bookshelf.model('Card', Card);
