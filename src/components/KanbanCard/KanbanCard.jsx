@@ -5,7 +5,7 @@ const KanbanCard = (props) => {
 
   return (
     <div className='cardContainer'>
-      <h1 className={title}>{title}</h1>
+      <h3 className={title}>{title}</h3>
       <p className={priorityName}>{priorityName}</p>
       <p className={created_byFirstName}>{created_byFirstName}</p>
       <button className='editButton'>Edit</button>

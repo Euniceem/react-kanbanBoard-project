@@ -38,7 +38,8 @@ class KanbanColumn extends Component {
       })
 
     const done = cardList.filter((card) => {
-      return card.status.includes('Done')
+
+      return card.status === 'Done'
     })
       .map((card, key) => {
         return (
