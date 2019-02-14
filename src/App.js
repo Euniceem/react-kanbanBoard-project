@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 import './App.css';
 import KanbanTitle from './components/KanbanTitle';
 import KanbanBoard from './components/KanbanBoard';
@@ -50,7 +49,7 @@ class App extends Component {
       <div className="App">
         <KanbanTitle title={this.state.pageTitle} />
 
-        <KanbanBoard data={this.cards} />
+        <KanbanBoard cards={this.cards} />
 
       </div>
     );

@@ -6,9 +6,9 @@ class KanbanBoard extends Component {
     super(props)
   }
   render() {
-    const data = this.props.data;
+    const cards = this.props.cards;
 
-    const filterColumn = data.filter((card) => {
+    const filterColumn = cards.filter((card) => {
 
       return card.status;
     })
