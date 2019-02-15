@@ -6,18 +6,19 @@ class KanbanBoard extends Component {
     super(props)
   }
   render() {
-    const data = this.props.data;
+    const cards = this.props.cards;
 
-    const inQueue = data.filter((card) => {
-      return card.status === 'In-Queue';
+
+    const inQueue = cards.filter((card) => {
+      return card.status.name === 'In-Queue';
     })
 
-    const inProgress = data.filter((card) => {
-      return card.status === 'In-Progress';
+    const inProgress = cards.filter((card) => {
+      return card.status.name === 'In-Progress';
     })
 
-    const done = data.filter((card) => {
-      return card.status === 'Done';
+    const done = cards.filter((card) => {
+      return card.status.name === 'Done';
     })
 
 

@@ -10,48 +10,49 @@ class KanbanColumn extends Component {
     const cardList = this.props.cards;
 
     const inQueue = cardList.filter((card) => {
-      return card.status.includes('In-Queue')
+      return card.status.name === 'In-Queue';
     })
       .map((card, key) => {
         return (
           <KanbanCard key={key}
             title={card.title}
-            priorityName={card.priorityName}
-            created_byFirstName={card.created_byFirstName}
-            assigned_byFirstName={card.assigned_byFirstName} />
+            priorityName={card.priority.name}
+            created_byFirstName={card.created.firstname}
+            assigned_byFirstName={card.assigned.firstname} />
         )
       })
 
 
 
     const inProgress = cardList.filter((card) => {
-      return card.status.includes('In-Progress')
+      return card.status.name === 'In-Progress';
     })
       .map((card, key) => {
+        console.log(card)
         return (
-          <KanbanCard key={key}
+          < KanbanCard key={key}
             title={card.title}
-            priorityName={card.priorityName}
-            created_byFirstName={card.created_byFirstName}
-            assigned_byFirstName={card.assigned_byFirstName} />
+            priorityName={card.priority.name}
+            created_byFirstName={card.created.firstname}
+            assigned_byFirstName={card.assigned.firstname} />
         )
       })
 
     const done = cardList.filter((card) => {
 
-      return card.status === 'Done'
+      return card.status.name === 'Done'
     })
       .map((card, key) => {
         return (
           <KanbanCard key={key}
             title={card.title}
-            priorityName={card.priorityName}
-            created_byFirstName={card.created_byFirstName}
-            assigned_byFirstName={card.assigned_byFirstName} />
+            priorityName={card.priority.name}
+            created_byFirstName={card.created.firstname}
+            assigned_byFirstName={card.assigned.firstname} />
         )
       })
     return (
-      <div className='columnContainer'>
+      <div className='columnContainer' >
         <div className='inQueue'>
           {inQueue}
         </div>

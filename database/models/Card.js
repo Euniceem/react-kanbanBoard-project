@@ -12,7 +12,7 @@ class Card extends bookshelf.Model {
   };
 
   assigned() {
-    return this.hasOne('User', 'id', 'assigned_by');
+    return this.hasOne('User', 'id', 'assigned_to');
   };
 
   status() {
