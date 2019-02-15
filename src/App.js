@@ -27,6 +27,7 @@ class App extends Component {
 
         <KanbanBoard cards={this.props.cards} />
 
+
       </div>
     );
   }
