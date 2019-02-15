@@ -8,12 +8,10 @@ router.get('/', (req, res) => {
     withRelated: ['priority', 'created', 'assigned', 'status']
   })
     .then((cards) => {
-
       return res.json(cards);
     })
     .catch(err => {
-      console.log(err)
-      res.json('error');
+      res.json(err.detail);
     })
 });
 
@@ -24,8 +22,6 @@ router.post('/', (req, res) => {
   const status_id = req.body.status_id;
   const created_by = req.body.created_by;
   const assigned_to = req.body.assigned_to;
-  console.log('BODY', req.body);
-  console.log(assigned_to)
 
   const card = {
     title: title ? title : null,
@@ -43,11 +39,10 @@ router.post('/', (req, res) => {
       });
     })
     .then(card => {
-      console.log('card', card);
       return res.json(card);
     })
     .catch(err => {
-      console.log(err);
+      res.json(err.detail);
     });
 });
 
@@ -62,7 +57,7 @@ router.get('/:id', (req, res) => {
       return res.json(card)
     })
     .catch(err => {
-      console.log(err);
+      res.json(err.detail);
     })
 });
 
@@ -80,7 +75,7 @@ router.put('/', (req, res) => {
       res.json(card)
     })
     .catch(err => {
-      console.log(err);
+      res.json(err.detail);
     })
 });
 
@@ -99,7 +94,7 @@ router.delete('/', (req, res) => {
         })
     })
     .catch(err => {
-      console.log(err);
+      res.json(err.detail);
     })
 });
 
