@@ -36,7 +36,7 @@ export const addCardAsync = (card) => {
   return (dispatch) => {
     return fetch('./cards', {
       method: 'POST',
-      body: JSON.stringify(book),
+      body: JSON.stringify(card),
       headers: {
         'Content_Type': 'application/json'
       }
