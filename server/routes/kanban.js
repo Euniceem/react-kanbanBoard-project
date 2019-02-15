@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
       return res.json(cards);
     })
     .catch(err => {
-      res.json('error')
+      console.log(err)
+      res.json('error');
     })
 });
 
@@ -40,7 +41,6 @@ router.post('/', (req, res) => {
       return newCard.refresh({
         withRelated: ['priority', 'status', 'created', 'assigned']
       });
-      // return res.json(newCard)
     })
     .then(card => {
       console.log('card', card);
@@ -51,18 +51,56 @@ router.post('/', (req, res) => {
     });
 });
 
-// Card.forge({
-//   title: title,
-//   body: body,
-//   priority: priority_id,
-//   status: status_id,
-//   created_by: created_by,
-//   assigned_to: assigned_to
-// })
-//   .save(null, { method: 'insert' })
-//   .then(() => {
-//     res.redirect('/');
-//   })
+router.get('/:id', (req, res) => {
+  let id = req.params, id;
 
+  return Card.query.where({ id: id })
+    .fetchAll({
+      withRelated: ['priority', 'status', 'created', 'assigned']
+    })
+    .then(card => {
+      return res.json(card)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+router.put('/', (req, res) => {
+  let id = parseInt(req.params.id);
+  let title = req.bodu.title;
+  let body = req.body.body;
+  let priority_id = parseInt(req.body.priority_id);
+  let created_by = parseInt(req.body.created_by);
+  let assigned_to = parseInt(req.body.assigned_to);
+
+  return new Card.where({ id: id })
+    .save({ title, body, priority_id, created_by, assigned_to })
+    .then(card => {
+      res.json(card)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+
+router.delete('/', (req, res) => {
+  let id = req.params.id
+
+  return new Card({ id: id })
+    .destroy()
+    .then(cards => {
+      return Card.fetchAll({
+        withRelated: ['priority', 'status', 'created', 'assigned']
+      })
+        .then(cards => {
+          res.json(cards)
+        })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
 
 module.exports = router;
