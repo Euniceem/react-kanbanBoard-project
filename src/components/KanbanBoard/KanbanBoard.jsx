@@ -10,13 +10,16 @@ class KanbanBoard extends Component {
 
     return (
       <div id="column">
-        <div className='inQueue'>In-Queue
+        <div className='inQueue'>
+          <h1>In-Queue</h1>
           <KanbanColumn cards={cards} status="In-Queue" />
         </div>
-        <div className='inProgress'>In-Progress
+        <div className='inProgress'>
+          <h1>In-Progress</h1>
           <KanbanColumn cards={cards} status="In-Progress" />
         </div>
-        <div className='done'>Done
+        <div className='done'>
+          <h1>Done</h1>
           <KanbanColumn cards={cards} status="Done" />
         </div>
       </div>
