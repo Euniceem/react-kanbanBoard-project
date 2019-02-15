@@ -15,7 +15,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props)
     return this.props.loadCards();
   }
 
@@ -27,7 +26,7 @@ class App extends Component {
 
         <KanbanBoard cards={this.props.cards} />
 
-
+        <AddCard />
       </div>
     );
   }

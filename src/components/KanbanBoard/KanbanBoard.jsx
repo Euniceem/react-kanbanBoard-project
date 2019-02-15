@@ -7,7 +7,7 @@ class KanbanBoard extends Component {
   }
   render() {
     const cards = this.props.cards;
-
+    console.log(cards)
 
     const inQueue = cards.filter((card) => {
       return card.status.name === 'In-Queue';
