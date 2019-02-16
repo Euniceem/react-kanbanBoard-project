@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Card = require('../../database/models/Card');
 
-
 router.get('/', (req, res) => {
   Card.fetchAll({
     withRelated: ['priority', 'created', 'assigned', 'status']
@@ -16,8 +15,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const title = req.body.title.trim();
-  const body = req.body.body.trim();
+
+  const title = req.body.title;
+  const body = req.body.body;
   const priority_id = req.body.priority_id;
   const status_id = req.body.status_id;
   const created_by = req.body.created_by;
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  let id = req.params, id;
+  let id = req.params.id;
 
   return Card.query.where({ id: id })
     .fetchAll({
@@ -78,7 +78,6 @@ router.put('/', (req, res) => {
       res.json(err.detail);
     })
 });
-
 
 router.delete('/', (req, res) => {
   let id = req.params.id

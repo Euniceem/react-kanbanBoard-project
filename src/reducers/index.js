@@ -1,6 +1,7 @@
 import { LOAD_CARDS, ADD_CARD } from '../actions';
 
 const cardReducer = (state = [], action) => {
+
   switch (action.type) {
     case LOAD_CARDS:
       return [].concat(action.payload);
@@ -10,7 +11,5 @@ const cardReducer = (state = [], action) => {
       return state;
   }
 }
-
-
 
 export default cardReducer;

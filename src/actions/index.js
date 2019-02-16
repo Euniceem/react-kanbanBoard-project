@@ -3,8 +3,7 @@
  */
 
 export const LOAD_CARDS = 'LOAD_CARDS';
-export const ADD_CARD = 'ADD_CARDS';
-
+export const ADD_CARD = 'ADD_CARD';
 
 /**
  * Action Creators
@@ -25,21 +24,14 @@ export const loadCards = () => {
   }
 }
 
-export function addCards(newCard) {
-  return {
-    type: ADD_CARD,
-    payload: newCard
-  }
-}
-
-export const addCardAsync = (card) => {
+export const addCard = (card) => {
   return (dispatch) => {
-    return fetch('./cards', {
+    return fetch('/cards', {
       method: 'POST',
-      body: JSON.stringify(card),
       headers: {
-        'Content_Type': 'application/json'
-      }
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(card),
     })
       .then((response) => {
         return response.json()

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import './KanbanTitle.css';
 import NewTaskForm from '../NewTaskForm/NewTaskForm';
-// import NewTaskForm from '../NewTaskForm/NewTaskForm';
+
 Modal.setAppElement('#root')
 
 class KanbanTitle extends Component {
@@ -23,8 +23,7 @@ class KanbanTitle extends Component {
   }
 
   afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // this.subtitle.style.color = '#f00';
+
   }
 
   closeModal() {
@@ -47,7 +46,6 @@ class KanbanTitle extends Component {
             onRequestClose={this.closeModal}
             contentLabel="Example Modal"
           >
-
             <NewTaskForm />
           </Modal>
         </div>
