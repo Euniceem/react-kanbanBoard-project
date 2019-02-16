@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Card = require('../../database/models/Card');
 
-
 router.get('/', (req, res) => {
   Card.fetchAll({
     withRelated: ['priority', 'created', 'assigned', 'status']
@@ -11,13 +10,18 @@ router.get('/', (req, res) => {
       return res.json(cards);
     })
     .catch(err => {
+<<<<<<< HEAD
       res.json(res.detail);
+=======
+      res.json(err.detail);
+>>>>>>> redux
     })
 });
 
 router.post('/', (req, res) => {
-  const title = req.body.title.trim();
-  const body = req.body.body.trim();
+
+  const title = req.body.title;
+  const body = req.body.body;
   const priority_id = req.body.priority_id;
   const status_id = req.body.status_id;
   const created_by = req.body.created_by;
@@ -42,9 +46,66 @@ router.post('/', (req, res) => {
       return res.json(card);
     })
     .catch(err => {
+<<<<<<< HEAD
       res.json(res.detail);
     });
 });
 
+=======
+      res.json(err.detail);
+    });
+});
+
+router.get('/:id', (req, res) => {
+  let id = req.params.id;
+
+  return Card.query.where({ id: id })
+    .fetchAll({
+      withRelated: ['priority', 'status', 'created', 'assigned']
+    })
+    .then(card => {
+      return res.json(card)
+    })
+    .catch(err => {
+      res.json(err.detail);
+    })
+});
+
+router.put('/', (req, res) => {
+  let id = parseInt(req.params.id);
+  let title = req.bodu.title;
+  let body = req.body.body;
+  let priority_id = parseInt(req.body.priority_id);
+  let created_by = parseInt(req.body.created_by);
+  let assigned_to = parseInt(req.body.assigned_to);
+
+  return new Card.where({ id: id })
+    .save({ title, body, priority_id, created_by, assigned_to })
+    .then(card => {
+      res.json(card)
+    })
+    .catch(err => {
+      res.json(err.detail);
+    })
+});
+
+router.delete('/', (req, res) => {
+  let id = req.params.id
+
+  return new Card({ id: id })
+    .destroy()
+    .then(cards => {
+      return Card.fetchAll({
+        withRelated: ['priority', 'status', 'created', 'assigned']
+      })
+        .then(cards => {
+          res.json(cards)
+        })
+    })
+    .catch(err => {
+      res.json(err.detail);
+    })
+});
+>>>>>>> redux
 
 module.exports = router;
