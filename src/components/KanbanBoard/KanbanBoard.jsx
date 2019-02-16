@@ -7,38 +7,22 @@ class KanbanBoard extends Component {
   }
   render() {
     const cards = this.props.cards;
-    console.log(cards)
-
-    const inQueue = cards.filter((card) => {
-      return card.status.name === 'In-Queue';
-    })
-
-    const inProgress = cards.filter((card) => {
-      return card.status.name === 'In-Progress';
-    })
-
-    const done = cards.filter((card) => {
-      return card.status.name === 'Done';
-    })
-
 
     return (
       <div id="column">
-        <div className='inQueue'>In-Queue
-          <KanbanColumn cards={inQueue} status="In-Queue" />
+        <div className='inQueue'>
+          <h1>In-Queue</h1>
+          <KanbanColumn cards={cards} status="In-Queue" />
         </div>
-        <div className='inProgress'>In-Progress
-          <KanbanColumn cards={inProgress} status="In-Progress" />
+        <div className='inProgress'>
+          <h1>In-Progress</h1>
+          <KanbanColumn cards={cards} status="In-Progress" />
         </div>
-        <div className='done'>Done
-          <KanbanColumn cards={done} status="Done" />
+        <div className='done'>
+          <h1>Done</h1>
+          <KanbanColumn cards={cards} status="Done" />
         </div>
       </div>
     );
   }
 }
-
-
-
-
-export default KanbanBoard;
