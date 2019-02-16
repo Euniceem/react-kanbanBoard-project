@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class NewTaskForm extends Component {
   constructor(props) {
     super(props);
@@ -13,9 +12,12 @@ class NewTaskForm extends Component {
       assignedToInput: ''
     };
 
+
     this.addNewCard = this.addNewCard.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+
 
   handleInputChange(e) {
     const value = e.target.value;
@@ -36,7 +38,7 @@ class NewTaskForm extends Component {
         this.setState({ created_byInput: value });
         break;
       case 'assigned_to':
-        this.setState({ assigned_toInput: event.target.value });
+        this.setState({ assigned_toInput: e.target.value });
         break;
       default:
         break;
@@ -75,12 +77,20 @@ class NewTaskForm extends Component {
   }
 
 
+
   render() {
     const input = this.state;
 
     return (
       <div id="NewCardForm-container">
-
+        <form action="" method="post">
+          <label type="text" value={this.state.title} onChange={this.handleInputChange}>
+            Title:
+        </label>
+          <label type="text" value={this.state.body} onChange={this.handleInputChange}>
+            Body:
+        </label>
+        </form>
       </div>
     );
   }
@@ -94,16 +104,16 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    addCard: card => {
-      dispatch(addCard(card));
-    }
-  };
+  // return {
+  //   addCard: card => {
+  //     dispatch(addCard(card));
+  //   }
+  // };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewTaskForm);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(NewTaskForm);
 
 export default NewTaskForm;
