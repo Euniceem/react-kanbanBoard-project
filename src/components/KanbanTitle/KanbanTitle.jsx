@@ -1,11 +1,17 @@
 import React from 'react';
 import './KanbanTitle.css';
 
+
 const KanbanTitle = (props) => {
   const { title } = props;
   return (
     <div className="header">
-      {title}
+      <div className="title">
+        {title}
+      </div>
+      <div className="newTask">
+        <button className="newTaskButton">+ New Task</button>
+      </div>
     </div>
   )
 };

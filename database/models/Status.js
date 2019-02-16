@@ -5,7 +5,7 @@ class Status extends bookshelf.Model {
   get timestamps() { return true; }
 
   statuses() {
-    return this.belongsTo('Card');
+    return this.hasMany('Card', 'status_id');
   }
 }
 

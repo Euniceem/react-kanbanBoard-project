@@ -1,69 +1,35 @@
 import React, { Component } from 'react';
 import KanbanCard from '../KanbanCard/KanbanCard';
 
-
 class KanbanColumn extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    const cardList = this.props.cards;
 
-    const inQueue = cardList.filter((card) => {
-      return card.status.includes('In-Queue')
-    })
+    const columnStatus = this.props.status;
+    const cards = this.props.cards
+      .filter(card => {
+        return card.status.name === columnStatus;
+      })
       .map((card, key) => {
         return (
           <KanbanCard key={key}
             title={card.title}
-            priorityName={card.priorityName}
-            created_byFirstName={card.created_byFirstName}
-            assigned_byFirstName={card.assigned_byFirstName} />
+            priorityName={card.priority.name}
+            created_byFirstName={card.created.firstname}
+            assigned_byFirstName={card.assigned.firstname} />
         )
       })
 
-
-
-    const inProgress = cardList.filter((card) => {
-      return card.status.includes('In-Progress')
-    })
-      .map((card, key) => {
-        return (
-          <KanbanCard key={key}
-            title={card.title}
-            priorityName={card.priorityName}
-            created_byFirstName={card.created_byFirstName}
-            assigned_byFirstName={card.assigned_byFirstName} />
-        )
-      })
-
-    const done = cardList.filter((card) => {
-      return card.status.includes('Done')
-    })
-      .map((card, key) => {
-        return (
-          <KanbanCard key={key}
-            title={card.title}
-            priorityName={card.priorityName}
-            created_byFirstName={card.created_byFirstName}
-            assigned_byFirstName={card.assigned_byFirstName} />
-        )
-      })
     return (
-      <div className='columnContainer'>
-        <div className='inQueue'>
-          {inQueue}
-        </div>
-        <div className='inProgress'>
-          {inProgress}
-        </div>
-        <div className='Done'>
-          {done}
-        </div>
+      <div className='columnContainer' >
+        {columnStatus}
+        {cards}
       </div>
     )
   }
 }
-
 
 export default KanbanColumn;

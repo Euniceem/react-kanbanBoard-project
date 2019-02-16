@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import KanbanTitle from './components/KanbanTitle';
 import KanbanBoard from './components/KanbanBoard';
+import { connect } from 'react-redux';
+import { loadCards } from '../src/actions'
 
 class App extends Component {
   constructor(props) {
@@ -10,38 +12,11 @@ class App extends Component {
     this.state = {
       pageTitle: 'Kanban'
     };
-
-    this.cards = [
-      {
-        title: 'demo',
-        status: 'In-Queue',
-        priorityName: 'High',
-        created_byFirstName: 'Eunice',
-        created_byLastName: 'Min',
-        assigned_byFirstName: 'Eunice',
-        assigned_byLastName: 'Min'
-      },
-      {
-        title: ' second demo',
-        status: 'In-Progress',
-        priorityName: 'Medium',
-        created_byFirstName: 'Eunice',
-        created_byLastName: 'Min',
-        assigned_byFirstName: 'Eunice',
-        assigned_byLastName: 'Min'
-      },
-      {
-        title: 'third demo',
-        status: 'Done',
-        priorityName: 'Low',
-        created_byFirstName: 'Eunice',
-        created_byLastName: 'Min',
-        assigned_byFirstName: 'Eunice',
-        assigned_byLastName: 'Min'
-      }
-    ]
   };
 
+  componentDidMount() {
+    return this.props.loadCards();
+  }
 
   render() {
 
@@ -49,11 +24,31 @@ class App extends Component {
       <div className="App">
         <KanbanTitle title={this.state.pageTitle} />
 
-        <KanbanBoard cards={this.cards} />
+        <KanbanBoard cards={this.props.cards} />
 
+        <AddCard />
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadCards: () => {
+      return dispatch(loadCards())
+    }
+  }
+}
+
+App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export default App;

@@ -1,14 +1,14 @@
 // Update with your config settings.
-require('dotenv').config({ path: './env' });
-
+require('dotenv').config({ path: './.env' });
+// console.log(process.env)
 module.exports = {
 
   client: 'pg',
   connection: {
-    host: process.env.POSTGRES_HOSTNAME_LOCAL,
+    host: process.env.POSTGRES_HOSTNAME,
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB
+    database: process.env.POSTGRES_DATABASE
   },
   pool: {
     min: 2,
@@ -20,4 +20,6 @@ module.exports = {
   seeds: {
     directory: __dirname + '/knex/seeds'
   }
+
+
 };
