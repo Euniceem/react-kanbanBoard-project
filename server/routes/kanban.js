@@ -10,11 +10,7 @@ router.get('/', (req, res) => {
       return res.json(cards);
     })
     .catch(err => {
-<<<<<<< HEAD
-      res.json(res.detail);
-=======
       res.json(err.detail);
->>>>>>> redux
     })
 });
 
@@ -46,12 +42,6 @@ router.post('/', (req, res) => {
       return res.json(card);
     })
     .catch(err => {
-<<<<<<< HEAD
-      res.json(res.detail);
-    });
-});
-
-=======
       res.json(err.detail);
     });
 });
@@ -73,14 +63,15 @@ router.get('/:id', (req, res) => {
 
 router.put('/', (req, res) => {
   let id = parseInt(req.params.id);
-  let title = req.bodu.title;
+  let title = req.body.title;
   let body = req.body.body;
+  let status_id = parseInt(req.body.status_id);
   let priority_id = parseInt(req.body.priority_id);
   let created_by = parseInt(req.body.created_by);
   let assigned_to = parseInt(req.body.assigned_to);
 
   return new Card.where({ id: id })
-    .save({ title, body, priority_id, created_by, assigned_to })
+    .save({ title, body, priority_id, status_id, created_by, assigned_to })
     .then(card => {
       res.json(card)
     })
@@ -106,6 +97,5 @@ router.delete('/', (req, res) => {
       res.json(err.detail);
     })
 });
->>>>>>> redux
 
 module.exports = router;
