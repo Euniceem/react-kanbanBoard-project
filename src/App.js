@@ -3,7 +3,7 @@ import './App.css';
 import KanbanTitle from './components/KanbanTitle';
 import KanbanBoard from './components/KanbanBoard';
 import { connect } from 'react-redux';
-import { loadCards } from '../src/actions'
+import { loadCards } from '../src/actions';
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log(this.props.cards)
     return (
       <div className="App">
         <KanbanTitle title={this.state.pageTitle} />

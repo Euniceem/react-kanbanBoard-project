@@ -1,4 +1,4 @@
-import { LOAD_CARDS, ADD_CARD } from '../actions';
+import { LOAD_CARDS, ADD_CARD, EDIT_CARD } from '../actions';
 
 const cardReducer = (state = [], action) => {
 
@@ -6,6 +6,8 @@ const cardReducer = (state = [], action) => {
     case LOAD_CARDS:
       return [].concat(action.payload);
     case ADD_CARD:
+      return [...state, action.payload];
+    case EDIT_CARD:
       return [...state, action.payload];
     default:
       return state;

@@ -10,6 +10,7 @@ class KanbanColumn extends Component {
 
     const columnStatus = this.props.status;
     const cards = this.props.cards
+    console.log('COlUMN CARDS', cards)
       .filter(card => {
         return card.status.name === columnStatus;
       })

@@ -4,6 +4,7 @@
 
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
+export const EDIT_CARD = 'EDIT_CARD'
 
 /**
  * Action Creators
@@ -39,6 +40,28 @@ export const addCard = (card) => {
       .then((body) => {
         return dispatch({
           type: ADD_CARD,
+          payload: body
+        })
+      })
+  }
+}
+
+export const editCard = (card) => {
+  return (dispatch) => {
+    return fetch('/cards', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(card),
+    })
+      .then((response) => {
+        return response.json()
+      })
+      .then((body) => {
+        console.log(body)
+        return dispatch({
+          type: EDIT_CARD,
           payload: body
         })
       })
