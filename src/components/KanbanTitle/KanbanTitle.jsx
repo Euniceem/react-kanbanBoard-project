@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import './KanbanTitle.css';
-import NewTaskForm from '../NewTaskForm/NewTaskForm';
+import NewTaskForm from '../../containers/NewTaskForm/NewTaskForm';
 
 Modal.setAppElement('#root')
 

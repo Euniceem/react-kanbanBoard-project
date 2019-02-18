@@ -26,3 +26,5 @@ class KanbanBoard extends Component {
     );
   }
 }
+
+export default KanbanBoard
