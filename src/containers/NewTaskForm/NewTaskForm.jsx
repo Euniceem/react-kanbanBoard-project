@@ -92,11 +92,11 @@ class NewTaskForm extends Component {
           </label>
           <br></br>
           <label name='priority' value={this.state.priorityInput} onChange={this.handleInputChange}>
-            <select name="prioriy" id="priority" value={this.state.priorityInput} onChange={this.handleInputChange}>
-              <option value={1}>High</option>
-              <option value={2}>Medium</option>
-              <option value={3}>Low</option>
-            </select>
+            <label name='priority' value={this.state.priorityInput} onChange={this.handleInputChange}>
+              <input type="radio" name="priority" value={1} />High
+            <input type="radio" name="priority" value={2} />Medium
+            <input type="radio" name="priority" value={3} />Low<br></br>
+            </label>
           </label>
           <br></br>
           <label name='created_by' value={this.state.createdByInput} onChange={this.handleInputChange}>
