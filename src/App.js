@@ -8,6 +8,7 @@ import { loadCards } from '../src/actions'
 class App extends Component {
   constructor(props) {
     super(props);
+    console.log('APP', this.props)
 
     this.state = {
       pageTitle: 'Kanban'
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log('APP', this.props)
     return (
       <div className="App">
         <KanbanTitle title={this.state.pageTitle} />

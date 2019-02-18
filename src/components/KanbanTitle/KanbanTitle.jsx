@@ -44,7 +44,7 @@ class KanbanTitle extends Component {
             isOpen={this.state.modalIsOpen}
             onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
-            contentLabel="Example Modal"
+            contentLabel="New Task Modal"
           >
             <NewTaskForm />
           </Modal>

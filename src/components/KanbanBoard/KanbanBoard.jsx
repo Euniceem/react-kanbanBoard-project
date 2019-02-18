@@ -7,6 +7,7 @@ class KanbanBoard extends Component {
   }
   render() {
     const cards = this.props.cards;
+    console.log('board', cards)
 
     return (
       <div id="column">

@@ -123,7 +123,7 @@ class EditForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    card: state.cardReducer
+    card: state.
   };
 };
 
