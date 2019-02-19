@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   let id = req.params.id;
 
-  return Card.query.where({ id: id })
+  return Card.where({ id: id })
     .fetchAll({
       withRelated: ['priority', 'status', 'created', 'assigned']
     })
@@ -62,6 +62,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/', (req, res) => {
+  console.log('BODY', req.body)
   let id = parseInt(req.params.id);
   let title = req.body.title;
   let body = req.body.body;
@@ -69,10 +70,12 @@ router.put('/', (req, res) => {
   let priority_id = parseInt(req.body.priority_id);
   let created_by = parseInt(req.body.created_by);
   let assigned_to = parseInt(req.body.assigned_to);
+  console.log(id, title, body, status_id, priority_id, created_by, assigned_to)
 
-  return new Card.where({ id: id })
+  return Card.where({ id: id })
     .save({ title, body, priority_id, status_id, created_by, assigned_to })
     .then(card => {
+      console.log(card)
       res.json(card)
     })
     .catch(err => {
@@ -80,19 +83,22 @@ router.put('/', (req, res) => {
     })
 });
 
-router.delete('/', (req, res) => {
+
+router.delete('/:id', (req, res) => {
   let id = req.params.id
 
-  return new Card({ id: id })
+  return Card.where({ id: id })
     .destroy()
+    // .then(cards => {
+    //   console.log('hit')
+    //   return Card.fetchAll({
+    //     withRelated: ['priority', 'status', 'created', 'assigned']
+    //   })
     .then(cards => {
-      return Card.fetchAll({
-        withRelated: ['priority', 'status', 'created', 'assigned']
-      })
-        .then(cards => {
-          res.json(cards)
-        })
+      console.log(cards)
+      res.json(cards)
     })
+    // })
     .catch(err => {
       res.json(err.detail);
     })
