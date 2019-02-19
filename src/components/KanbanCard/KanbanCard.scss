@@ -1,0 +1,91 @@
+$inQueue-primary-color: #FFDDB0;
+$inQueue-secondary-color: #FF9000;
+$inProgress-primary-color: #C0FFAF;
+$inProgress-secondary-color: #33F100;
+$done-primary-color: #BBD3D7;
+$done-secondary-color: #658085;
+$padding: 10px;
+
+#cardContainer{
+  margin: 5px;
+  font-size: 12px;
+  
+  
+  .In-Queue{
+    border: 1px solid $inQueue-secondary-color;
+    background-color: $inQueue-primary-color;
+    text-align: left;
+    padding: $padding;
+
+    .title{
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .editButton{
+      border: none;
+      background-color: $inQueue-primary-color;
+      color: $inQueue-secondary-color;
+
+    }
+    .deleteButton{
+      border: none;
+      background-color: $inQueue-primary-color;
+      color: $inQueue-secondary-color;
+    }
+    .createdBy{
+      text-align: right;
+    }
+  }
+
+  .In-Progress{
+    border: 1px solid $inProgress-secondary-color;
+    background-color: $inProgress-primary-color;
+    text-align: left;
+    padding: $padding;
+
+    .title{
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .editButton{
+      border: none;
+      background-color: $inProgress-primary-color;
+      color: $inProgress-secondary-color;
+
+    }
+    .deleteButton{
+      border: none;
+      background-color: $inProgress-primary-color;
+      color: $inProgress-secondary-color;
+    }
+    .createdBy{
+      text-align: right;
+    }
+  }
+
+  .Done{
+    border: 1px solid $done-secondary-color;
+    background-color: $done-primary-color;
+    text-align: left;
+    padding: $padding;
+
+    .title{
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .editButton{
+      border: none;
+      background-color: $done-primary-color;
+      color: $done-secondary-color;
+
+    }
+    .deleteButton{
+      border: none;
+      background-color: $done-primary-color;
+      color: $done-secondary-color;
+    }
+    .createdBy{
+      text-align: right;
+    }
+  }
+}

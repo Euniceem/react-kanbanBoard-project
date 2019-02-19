@@ -1,0 +1,19 @@
+#column{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+
+  .inQueue{
+    width: 33.33%;
+  }
+
+  .inProgress{
+    border-right: 1px solid grey;
+    border-left: 1px solid grey;
+    width: 33.33%;
+  }
+  .done{
+    width: 33.33%;
+  }
+}
