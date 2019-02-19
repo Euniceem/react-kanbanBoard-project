@@ -8,6 +8,8 @@ class EditForm extends Component {
     super(props)
 
     this.state = {
+      moldalisOpen: false,
+      idInput: this.props.id,
       titleInput: this.props.title,
       bodyInput: this.props.body,
       priorityInput: this.props.priorityName,
@@ -56,6 +58,7 @@ class EditForm extends Component {
     e.preventDefault();
 
     const card = {};
+    card.id = this.state.idInput;
     card.title = this.state.titleInput;
     card.body = this.state.bodyInput;
     card.created_by = this.state.createdByInput;
@@ -63,7 +66,6 @@ class EditForm extends Component {
     card.priority_id = this.state.priorityInput;
     card.status_id = this.state.statusInput;
 
-    console.log(card)
     this.props.editCard(card);
     this.setState({
       titleInput: '',
@@ -74,7 +76,6 @@ class EditForm extends Component {
       assignedToInput: ''
     });
   }
-
 
   render() {
     return (
@@ -107,18 +108,16 @@ class EditForm extends Component {
           <label name='created_by' value={this.state.createdByInput} onChange={this.handleInputChange}>
             Created By:
           <br></br>
-            <select name="created_by" value={this.state.createdByInput} onChange={this.handleInputChange}>
-              {/* <UserList value={this.state.createdByInput} /> */}
-            </select>
+            {/* <select name="created_by" value={this.state.createdByInput} onChange={this.handleInputChange}>
+            </select> */}
             <input name='created_by' type="text" value={this.state.createdByInput} onChange={this.handleInputChange} />
           </label>
           <br></br>
           <label name='assigned_to' value={this.state.assignedToInput} onChange={this.handleInputChange}>
             Assigned To:
           <br></br>
-            <select name="assigned_to" value={this.state.assignedToInput} onChange={this.handleInputChange}>
-              {/* <UserList value={this.state.assignedToInput} /> */}
-            </select>
+            {/* <select name="assigned_to" value={this.state.assignedToInput} onChange={this.handleInputChange}>
+            </select> */}
             <input name='assigned_to' type="text" value={this.state.assignedToInput} onChange={this.handleInputChange} />
           </label>
           <br></br>
@@ -131,7 +130,7 @@ class EditForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    card: state.cardReducer
+    card: state
   }
 };
 

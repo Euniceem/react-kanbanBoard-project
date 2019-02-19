@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import KanbanColumn from '../KanbanColumn/KanbanColumn';
+import './KanbanBoard.scss';
 
 class KanbanBoard extends Component {
   constructor(props) {
@@ -11,15 +12,15 @@ class KanbanBoard extends Component {
     return (
       <div id="column">
         <div className='inQueue'>
-          <h1>In-Queue</h1>
+          <h1 className="statusTitle">In Queue</h1>
           <KanbanColumn cards={cards} status="In-Queue" />
         </div>
         <div className='inProgress'>
-          <h1>In-Progress</h1>
+          <h1 className="statusTitle">In Progress</h1>
           <KanbanColumn cards={cards} status="In-Progress" />
         </div>
         <div className='done'>
-          <h1>Done</h1>
+          <h1 className="statusTitle">Done</h1>
           <KanbanColumn cards={cards} status="Done" />
         </div>
       </div>

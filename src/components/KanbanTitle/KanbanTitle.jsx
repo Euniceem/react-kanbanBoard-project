@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import './KanbanTitle.css';
+import './KanbanTitle.scss';
 import NewTaskForm from '../../containers/NewTaskForm/NewTaskForm';
 
 Modal.setAppElement('#root')
@@ -14,7 +14,6 @@ class KanbanTitle extends Component {
     }
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -22,23 +21,18 @@ class KanbanTitle extends Component {
     this.setState({ modalIsOpen: true });
   }
 
-  afterOpenModal() {
-
-  }
-
   closeModal() {
     this.setState({ modalIsOpen: false });
   }
-
 
   render() {
     const { title } = this.props;
     return (
       <div className="header">
-        <div className="title">
+        <div id="title" className="title">
           {title}
         </div>
-        <div className="newTask">
+        <div id="newTask" className="newTask">
           <button className="newTaskButton" onClick={this.openModal}>+ New Task</button>
           <Modal
             isOpen={this.state.modalIsOpen}
